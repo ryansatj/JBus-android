@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/aclonica</item>
+        <item>@font/alatsi</item>
+        <item>@font/aldrich</item>
+        <item>@font/arizonia</item>
+        <item>@font/caesar_dressing</item>
+        <item>@font/concert_one</item>
+        <item>@font/major_mono_display</item>
+        <item>@font/miss_fajardose</item>
+        <item>@font/press_start_2p</item>
+        <item>@font/racing_sans_one</item>
+        <item>@font/walter_turncoat</item>
+    </array>
+</resources>
