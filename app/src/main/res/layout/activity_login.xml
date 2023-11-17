@@ -84,7 +84,7 @@
             android:typeface="normal" />
 
         <Button
-            android:id="@+id/reg_button"
+            android:id="@+id/log_button"
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

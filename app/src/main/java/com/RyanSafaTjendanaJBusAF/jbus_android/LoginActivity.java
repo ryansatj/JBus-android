@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.username_reg);
         passwordEditText = findViewById(R.id.pass_reg);
 
-        Button loginButton = findViewById(R.id.reg_button);
+        Button loginButton = findViewById(R.id.log_button);
         Button registerButton = findViewById(R.id.create_button);
 
         loginButton.setOnClickListener(v->{
