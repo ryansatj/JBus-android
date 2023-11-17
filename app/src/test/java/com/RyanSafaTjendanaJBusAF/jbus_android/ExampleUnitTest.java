@@ -1,4 +1,4 @@
-package com.RyanSafaTjendanaJBusAF;
+package com.RyanSafaTjendanaJBusAF.jbus_android;
 
 import org.junit.Test;
 

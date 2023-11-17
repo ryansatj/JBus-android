@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:accessibilityLiveRegion="none"
+    android:animateLayoutChanges="true"
+    android:animationCache="false"
+    android:background="@drawable/purple_wallpaper_with_colorful_background_purple_background_1340_27517"
+    android:backgroundTint="#000000"
+    android:backgroundTintMode="add"
+    android:focusable="auto"
+    android:foregroundGravity="top"
+    android:foregroundTint="@color/purple_200"
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"> <!-- Add this line -->
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="77dp"
+        android:fontFamily="@font/major_mono_display"
+        android:gravity="top"
+        android:text="JBUS"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/kata"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:fontFamily="@font/major_mono_display"
+        android:gravity="top"
+        android:text="Make your travel better with us"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/out_button"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginBottom="200dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:accessibilityLiveRegion="polite"
+        android:backgroundTint="#9909C7D8"
+        android:fontFamily="monospace"
+        android:text="Sign Out"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:cornerRadius="21dp" />
+
+</LinearLayout>
