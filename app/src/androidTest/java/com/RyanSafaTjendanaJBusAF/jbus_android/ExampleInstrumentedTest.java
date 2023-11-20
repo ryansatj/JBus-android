@@ -1,4 +1,4 @@
-package com.RyanSafaTjendanaJBusAF.jbus_android;
+package com.ryansafatjendanajbusaf.jbus_android;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.RyanSafaTjendanaJBusAF.jbus_android", appContext.getPackageName());
+        assertEquals("com.ryansafatjendanajbusaf.jbus_android", appContext.getPackageName());
     }
 }

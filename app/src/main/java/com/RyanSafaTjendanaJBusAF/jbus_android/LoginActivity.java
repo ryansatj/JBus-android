@@ -1,4 +1,4 @@
-package com.RyanSafaTjendanaJBusAF.jbus_android;
+package com.ryansafatjendanajbusaf.jbus_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        emailEditText = findViewById(R.id.username_reg);
+        emailEditText = findViewById(R.id.email_log);
         passwordEditText = findViewById(R.id.pass_reg);
 
         Button loginButton = findViewById(R.id.log_button);
@@ -39,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
             if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
                 viewToast(this, "Masukkan email dan pass");
             } else {
+                Intent intent = new Intent(this, AboutMeActivity.class);
+                intent.putExtra("email", email);
                 viewToast(this, "Login");
                 moveActivity(this, MainActivity.class);
             }

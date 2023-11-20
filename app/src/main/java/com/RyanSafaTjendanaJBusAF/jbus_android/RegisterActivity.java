@@ -1,4 +1,4 @@
-package com.RyanSafaTjendanaJBusAF.jbus_android;
+package com.ryansafatjendanajbusaf.jbus_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegisterActivity extends AppCompatActivity {
+public class
+RegisterActivity extends AppCompatActivity {
 
     private EditText userEditText;
     private EditText emailEditText;
@@ -26,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        userEditText = findViewById(R.id.username_reg);
+        userEditText = findViewById(R.id.email_log);
         emailEditText = findViewById(R.id.email_reg);
         passwordEditText = findViewById(R.id.pass_reg);
 
@@ -51,7 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
     public void moveActivity(Context ctx, Class<?> cls){
         Intent intent = new Intent(ctx, cls);
         startActivity(intent);

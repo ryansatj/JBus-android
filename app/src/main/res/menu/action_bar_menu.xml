@@ -12,8 +12,8 @@
     <item
         android:id="@+id/person_button"
         android:icon="@drawable/baseline_person_24"
-        android:title="Person Button"
-        app:showAsAction="collapseActionView|always" />
+        android:title="Person_Button"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/payment_button"

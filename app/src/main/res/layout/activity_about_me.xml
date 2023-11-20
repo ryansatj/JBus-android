@@ -15,7 +15,7 @@
     android:focusable="auto"
     android:foregroundGravity="top"
     android:foregroundTint="@color/purple_200"
-    android:gravity="center"
+    android:gravity="top"
     android:orientation="vertical"
     tools:context=".LoginActivity"> <!-- Add this line -->
 
@@ -24,12 +24,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/major_mono_display"
-        android:gravity="center"
         android:text="JBUS"
+        android:textAlignment="center"
+        android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
         android:textSize="48sp"
         android:textStyle="bold" />
+
     <TextView
         android:id="@+id/kata"
         android:layout_width="wrap_content"
@@ -37,10 +39,25 @@
         android:fontFamily="@font/major_mono_display"
         android:gravity="center"
         android:text="Make your travel better with us"
+        android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/initial"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginVertical="24dp"
+        android:background="@drawable/baseline_circle_24"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:text="P"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="48dp" />
 
     <LinearLayout
         android:id="@+id/login_form"
@@ -48,10 +65,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="36dp"
         android:background="#A6E8D9D9"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="23dp">
 
         <EditText
-            android:id="@+id/email_log"
+            android:id="@+id/username"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="52dp"
@@ -61,20 +79,23 @@
             android:layout_marginEnd="50dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:background="#E66E7CC3"
-            android:drawableStart="@android:drawable/ic_menu_myplaces"
+            android:background="#6E7CC3"
             android:drawingCacheQuality="auto"
-            android:fontFamily="@font/concert_one"
+            android:fontFamily="monospace"
             android:hint="Username"
             android:inputType="textPersonName"
             android:insetLeft="50dp"
             android:insetRight="50dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/email_reg"
+            android:id="@+id/email_me"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="52dp"
@@ -84,19 +105,21 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:background="#E66E7CC3"
-            android:drawableStart="@android:drawable/sym_action_email"
             android:drawingCacheQuality="auto"
-            android:fontFamily="@font/concert_one"
+            android:fontFamily="monospace"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:insetLeft="50dp"
             android:insetRight="50dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
             android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textSize="16sp"
+            android:typeface="normal" />
 
         <EditText
-            android:id="@+id/pass_reg"
+            android:id="@+id/balance"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,63 +128,58 @@
             android:layout_marginBottom="20dp"
             android:background="#E66E7CC2"
             android:bufferType="spannable"
-            android:drawableStart="@android:drawable/ic_lock_idle_lock"
-            android:fontFamily="@font/concert_one"
-            android:hint="Password"
-            android:inputType="textPassword"
+            android:fontFamily="monospace"
+            android:hint="Balance"
+            android:inputType="number"
             android:insetLeft="50dp"
             android:insetRight="50dp"
+            android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#000000"
-            android:textSize="16sp"
-            android:typeface="normal" />
-
-        <Button
-            android:id="@+id/reg_button"
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:accessibilityLiveRegion="polite"
-            android:backgroundTint="#994909D8"
-            android:fontFamily="@font/major_mono_display"
-            android:insetLeft="100dp"
-            android:insetRight="100dp"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="12dp"
-            android:text="Create"
-            android:textSize="16sp"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:visibility="visible"
-            app:cornerRadius="21dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:text="Already had an account?"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="#000000" />
-
-        <Button
-            android:id="@+id/sign_button"
-            android:layout_width="281dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:background="#00FFFFFF"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:paddingHorizontal="16dp"
-            android:text="SIGN IN
-"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:iconTint="#00AA2121" />
-
+            android:textSize="16sp" />
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/topUp"
+        style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic"
+        android:background="#4F3C95B5"
+        android:drawingCacheQuality="auto"
+        android:fontFamily="@font/concert_one"
+        android:hint="Top Up Amount"
+        android:inputType="text|number"
+        android:insetLeft="50dp"
+        android:insetRight="50dp"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
+
+    <Button
+        android:id="@+id/top_button"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="polite"
+        android:backgroundTint="#994909D8"
+        android:fontFamily="@font/major_mono_display"
+        android:insetLeft="150dp"
+        android:insetRight="150dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp"
+        android:text="TopUp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:cornerRadius="21dp" />
 </LinearLayout>

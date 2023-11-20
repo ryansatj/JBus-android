@@ -40,7 +40,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/username_reg"
+            android:id="@+id/email_log"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="52dp"
@@ -96,9 +96,9 @@
             android:paddingHorizontal="12dp"
             android:paddingVertical="12dp"
             android:text="LOGIN"
-            android:textSize="16sp"
             android:textAllCaps="false"
             android:textColor="@color/white"
+            android:textSize="16sp"
             android:visibility="visible"
             app:cornerRadius="21dp" />
 
