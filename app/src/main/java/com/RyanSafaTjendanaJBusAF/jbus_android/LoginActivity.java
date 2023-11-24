@@ -10,9 +10,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ryansafatjendanajbusaf.jbus_android.model.Account;
+import com.ryansafatjendanajbusaf.jbus_android.model.BaseResponse;
+import com.ryansafatjendanajbusaf.jbus_android.request.BaseApiService;
+import com.ryansafatjendanajbusaf.jbus_android.request.UtilsApi;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LoginActivity extends AppCompatActivity {
-    private EditText emailEditText;
-    private EditText passwordEditText;
+    private BaseApiService mApiService;
+    private Context mContext;
+    private EditText email, password;
+    public static Account loggedAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,24 +35,23 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        emailEditText = findViewById(R.id.email_log);
-        passwordEditText = findViewById(R.id.pass_reg);
+        email = findViewById(R.id.email_log);
+        password = findViewById(R.id.pass_reg);
+
+        mContext = this;
+        mApiService = UtilsApi.getApiService();
 
         Button loginButton = findViewById(R.id.log_button);
         Button registerButton = findViewById(R.id.create_button);
 
         loginButton.setOnClickListener(v->{
+            String getEmail = email.getText().toString();
+            String getPassword = password.getText().toString();
 
-            String email = emailEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
-
-            if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
+            if(TextUtils.isEmpty(getEmail) || TextUtils.isEmpty(getPassword)){
                 viewToast(this, "Masukkan email dan pass");
             } else {
-                Intent intent = new Intent(this, AboutMeActivity.class);
-                intent.putExtra("email", email);
-                viewToast(this, "Login");
-                moveActivity(this, MainActivity.class);
+                handleLogin();
             }
         });
 
@@ -59,5 +69,42 @@ public class LoginActivity extends AppCompatActivity {
 
     private void viewToast(Context ctx, String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    protected void handleLogin() {
+        String emailS = email.getText().toString();
+        String passwordS = password.getText().toString();
+        if (emailS.isEmpty() || passwordS.isEmpty()) {
+            Toast.makeText(mContext, "Field cannot be empty",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        mApiService.login(emailS, passwordS).enqueue(new Callback<BaseResponse<Account>>(){
+            @Override
+            public void onResponse(Call<BaseResponse<Account>> call, Response<BaseResponse<Account>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(mContext, "Application error " +
+                            response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                BaseResponse<Account> res = response.body();
+                if (res.success) {
+                    finish();
+                    loggedAccount = res.payload;
+                    viewToast(mContext, "selamat datang di JBUS");
+                    Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
+                    moveActivity(mContext, MainActivity.class);
+                }
+                else{
+                    viewToast(mContext, "Email atau Password salah");
+                }
+
+            }
+            @Override
+            public void onFailure(Call<BaseResponse<Account>> call, Throwable t) {
+                Toast.makeText(mContext, "Problem with the server",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

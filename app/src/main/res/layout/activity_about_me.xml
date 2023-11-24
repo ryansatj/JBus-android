@@ -46,7 +46,7 @@
         android:textStyle="bold" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/initial"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -54,7 +54,7 @@
         android:background="@drawable/baseline_circle_24"
         android:backgroundTint="@color/white"
         android:gravity="center"
-        android:text="P"
+        android:hint="P"
         android:layout_gravity="center"
         android:textColor="@color/black"
         android:textSize="48dp" />
@@ -68,7 +68,7 @@
         android:orientation="vertical"
         android:paddingBottom="23dp">
 
-        <EditText
+        <TextView
             android:id="@+id/username"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
@@ -83,7 +83,6 @@
             android:drawingCacheQuality="auto"
             android:fontFamily="monospace"
             android:hint="Username"
-            android:inputType="textPersonName"
             android:insetLeft="50dp"
             android:insetRight="50dp"
             android:paddingTop="0dp"
@@ -94,7 +93,7 @@
             android:textColor="#000000"
             android:textSize="16sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/email_me"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
@@ -108,7 +107,6 @@
             android:drawingCacheQuality="auto"
             android:fontFamily="monospace"
             android:hint="Email"
-            android:inputType="textEmailAddress"
             android:insetLeft="50dp"
             android:insetRight="50dp"
             android:paddingTop="0dp"
@@ -118,7 +116,7 @@
             android:textSize="16sp"
             android:typeface="normal" />
 
-        <EditText
+        <TextView
             android:id="@+id/balance"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
@@ -130,7 +128,6 @@
             android:bufferType="spannable"
             android:fontFamily="monospace"
             android:hint="Balance"
-            android:inputType="number"
             android:insetLeft="50dp"
             android:insetRight="50dp"
             android:textAlignment="viewStart"
@@ -182,4 +179,25 @@
         android:textSize="16sp"
         android:visibility="visible"
         app:cornerRadius="21dp" />
+
+    <Button
+        android:id="@+id/back_button"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="polite"
+        android:backgroundTint="#994909D8"
+        android:fontFamily="@font/major_mono_display"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp"
+        android:text="Back"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:cornerRadius="21dp" />
+
 </LinearLayout>
