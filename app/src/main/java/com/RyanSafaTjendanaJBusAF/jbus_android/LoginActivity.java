@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (res.success) {
                     finish();
                     loggedAccount = res.payload;
-                    viewToast(mContext, "selamat datang di JBUS");
+                    viewToast(mContext, "selamat datang di JBUS " + loggedAccount.name );
                     Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
                     moveActivity(mContext, MainActivity.class);
                 }

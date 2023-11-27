@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/major_mono_display"
-        android:text="JBUS"
+        android:text="JBUS company"
         android:textAlignment="center"
         android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/major_mono_display"
         android:gravity="center"
-        android:text="Make your travel better with us"
+        android:text="Make your bussines better with us"
         android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
@@ -47,7 +47,7 @@
 
 
     <TextView
-        android:id="@+id/initial"
+        android:id="@+id/initialCompany"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginVertical="24dp"
@@ -59,20 +59,17 @@
         android:textColor="@color/black"
         android:textSize="48dp" />
 
-
     <LinearLayout
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="36dp"
         android:background="#A6E8D9D9"
-        android:gravity="center_vertical"
-        android:layout_gravity="center"
         android:orientation="vertical"
         android:paddingBottom="23dp">
 
         <TextView
-            android:id="@+id/username"
+            android:id="@+id/nameCompany"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="52dp"
@@ -85,7 +82,8 @@
             android:background="#6E7CC3"
             android:drawingCacheQuality="auto"
             android:fontFamily="monospace"
-            android:hint="Username"
+            android:drawableStart="@drawable/baseline_apartment_24"
+            android:hint="Company Name"
             android:insetLeft="50dp"
             android:insetRight="50dp"
             android:paddingTop="0dp"
@@ -97,7 +95,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/email_me"
+            android:id="@+id/addressCompany"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="52dp"
@@ -109,7 +107,8 @@
             android:background="#E66E7CC3"
             android:drawingCacheQuality="auto"
             android:fontFamily="monospace"
-            android:hint="Email"
+            android:hint="Address"
+            android:drawableStart="@drawable/baseline_home_24"
             android:insetLeft="50dp"
             android:insetRight="50dp"
             android:paddingTop="0dp"
@@ -120,7 +119,7 @@
             android:typeface="normal" />
 
         <TextView
-            android:id="@+id/balance"
+            android:id="@+id/phoneCompany"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -130,7 +129,8 @@
             android:background="#E66E7CC2"
             android:bufferType="spannable"
             android:fontFamily="monospace"
-            android:hint="Balance"
+            android:hint="Phone Number"
+            android:drawableStart="@drawable/baseline_phone_24"
             android:insetLeft="50dp"
             android:insetRight="50dp"
             android:textAlignment="viewStart"
@@ -139,47 +139,8 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/topUp"
-        style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="#C93C95B5"
-        android:backgroundTint="#0A0756"
-        android:drawingCacheQuality="auto"
-        android:fontFamily="@font/concert_one"
-        android:hint="Top Up Amount"
-        android:inputType="text|number"
-        android:insetLeft="50dp"
-        android:insetRight="50dp"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textStyle="italic" />
 
-    <Button
-        android:id="@+id/top_button"
-        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
-        android:layout_marginRight="150dp"
-        android:accessibilityLiveRegion="polite"
-        android:backgroundTint="#994909D8"
-        android:fontFamily="@font/major_mono_display"
-        android:text="TopUp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:visibility="visible"
-        app:cornerRadius="21dp" />
+
 
     <LinearLayout
         android:id="@+id/footer"
@@ -205,37 +166,5 @@
             android:visibility="visible"
             app:cornerRadius="21dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginBottom="5dp"
-            android:background="#0D0046"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:text="You're not registered as a renter"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/create_renter"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:accessibilityLiveRegion="polite"
-                android:backgroundTint="#994909D8"
-                android:fontFamily="@font/major_mono_display"
-                android:text="Register now"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:cornerRadius="21dp" />
-        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

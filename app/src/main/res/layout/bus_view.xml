@@ -23,8 +23,5 @@
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="RtlHardcoded" />
-
-
     </LinearLayout>
-
 </LinearLayout>

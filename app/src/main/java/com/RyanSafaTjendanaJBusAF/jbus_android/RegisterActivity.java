@@ -92,10 +92,14 @@ RegisterActivity extends AppCompatActivity {
                     return;
                 }
                 BaseResponse<Account> res = response.body();
-                if (res.success) finish();
-                Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
-                moveActivity(mContext, LoginActivity.class);
-                viewToast(mContext, "Register Berhasil");
+                if (res.success) {
+                    finish();
+                    Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
+                    moveActivity(mContext, LoginActivity.class);
+                }
+                else{
+                    Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
+                }
             }
             @Override
             public void onFailure(Call<BaseResponse<Account>> call, Throwable t) {

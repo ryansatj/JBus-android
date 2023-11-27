@@ -35,8 +35,26 @@ public class AboutMeActivity extends AppCompatActivity {
     private String userEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try{
+            getSupportActionBar().hide();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_me);
+        if(LoginActivity.loggedAccount.company == null){
+            setContentView(R.layout.activity_about_me);
+            Button renterReg = findViewById(R.id.create_renter);
+            renterReg.setOnClickListener(v->{
+                moveActivity(this, RegisterRenterActivity.class);
+            });
+        }
+        else{
+            setContentView(R.layout.activity_about_me_1);
+            Button busManage = findViewById(R.id.manage_bus);
+            busManage.setOnClickListener(v->{
+                moveActivity(this, ManageBusActivity.class);
+            });
+        }
         email = findViewById(R.id.email_me);
         name = findViewById(R.id.username);
         balance = findViewById(R.id.balance);
@@ -50,6 +68,7 @@ public class AboutMeActivity extends AppCompatActivity {
         String balanceS = doub.toString();
 
         Button topUp = findViewById(R.id.top_button);
+        Button back = findViewById(R.id.back_button);
 
         profileInitial.setText(initialS);
         name.setText(nameS);
@@ -58,14 +77,12 @@ public class AboutMeActivity extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getApiService();
 
-        Button back = findViewById(R.id.back_button);
-
         topUp.setOnClickListener(v-> {
             handleTopup();
         });
 
         back.setOnClickListener(v->{
-            moveActivity(this, MainActivity.class);
+            finish();
         });
     }
 

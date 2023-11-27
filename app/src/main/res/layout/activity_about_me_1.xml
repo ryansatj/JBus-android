@@ -59,15 +59,12 @@
         android:textColor="@color/black"
         android:textSize="48dp" />
 
-
     <LinearLayout
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="36dp"
         android:background="#A6E8D9D9"
-        android:gravity="center_vertical"
-        android:layout_gravity="center"
         android:orientation="vertical"
         android:paddingBottom="23dp">
 
@@ -139,6 +136,7 @@
             android:textSize="16sp" />
     </LinearLayout>
 
+
     <EditText
         android:id="@+id/topUp"
         style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
@@ -208,7 +206,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginBottom="5dp"
             android:background="#0D0046"
             android:orientation="vertical">
@@ -217,19 +215,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
-                android:text="You're not registered as a renter"
+                android:text="You're already registered as a renter"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#FFFFFF" />
 
             <Button
-                android:id="@+id/create_renter"
+                android:id="@+id/manage_bus"
                 style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:accessibilityLiveRegion="polite"
                 android:backgroundTint="#994909D8"
                 android:fontFamily="@font/major_mono_display"
-                android:text="Register now"
+                android:text="Manage Bus"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="15sp"

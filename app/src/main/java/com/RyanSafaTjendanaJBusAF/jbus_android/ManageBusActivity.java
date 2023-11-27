@@ -1,34 +1,32 @@
 package com.ryansafatjendanajbusaf.jbus_android;
 
-import static java.util.zip.Inflater.*;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-import com.ryansafatjendanajbusaf.jbus_android.model.Bus;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.ryansafatjendanajbusaf.jbus_android.model.Account;
+import com.ryansafatjendanajbusaf.jbus_android.model.BaseResponse;
+import com.ryansafatjendanajbusaf.jbus_android.model.Bus;
+import com.ryansafatjendanajbusaf.jbus_android.request.BaseApiService;
+import com.ryansafatjendanajbusaf.jbus_android.request.UtilsApi;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
-public class MainActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ManageBusActivity extends AppCompatActivity {
     private Button[] btns;
     private int currentPage = 0;
     private int pageSize = 10;
@@ -39,23 +37,37 @@ public class MainActivity extends AppCompatActivity {
     private Button nextButton = null;
     private ListView busListView = null;
     private HorizontalScrollView pageScroll = null;
-
+    private BaseApiService mApiService;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try{
+            getSupportActionBar().hide();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button loginButton = findViewById(R.id.out_button);
+        setContentView(R.layout.activity_manage_bus);
 
+        mContext = this;
+        mApiService = UtilsApi.getApiService();
+        handleBus();
         prevButton = findViewById(R.id.prev_page);
         nextButton = findViewById(R.id.next_page);
         pageScroll = findViewById(R.id.page_number_scroll);
-        busListView = findViewById(R.id.list_bus);
-        listBus = Bus.sampleBusList(100);
-        listSize = listBus.size();
+        busListView = findViewById(R.id.list_personal_bus);
+        Button addbutton = findViewById(R.id.add_bus);
+        Button aboutcomp = findViewById(R.id.about_company);
+        Button back = findViewById(R.id.back_button);
 
-        paginationFooter();
-        goToPage(currentPage);
+        addbutton.setOnClickListener(v -> {
+            moveActivity(this, AddBusActivity.class);
+        });
+        aboutcomp.setOnClickListener((v->{
+            moveActivity(this, AboutMeCompany.class);
+        }));
+
         prevButton.setOnClickListener(v -> {
             currentPage = currentPage != 0? currentPage-1 : 0;
             goToPage(currentPage);
@@ -66,28 +78,11 @@ public class MainActivity extends AppCompatActivity {
             goToPage(currentPage);
         });
 
-        loginButton.setOnClickListener(v-> {
-            LoginActivity.loggedAccount = null;
-            moveActivity(this, LoginActivity.class);
+        back.setOnClickListener(v->{
+            finish();
         });
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar_menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-        if(itemId == R.id.person_button){
-            moveActivity(this, AboutMeActivity.class);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
-
     public void moveActivity(Context ctx, Class<?> cls){
         Intent intent = new Intent(ctx, cls);
         startActivity(intent);
@@ -144,8 +139,35 @@ public class MainActivity extends AppCompatActivity {
         int endIndex = Math.min(startIndex + pageSize, listBus.size());
         List<Bus> paginatedList = listBus.subList(startIndex, endIndex);
 
-        BusArrayAdapter paginatedAdapter = new BusArrayAdapter(this, paginatedList);
-        busListView = findViewById(R.id.list_bus);
+        PersonalBusArrayAdapter paginatedAdapter = new PersonalBusArrayAdapter(this, paginatedList);
+        busListView = findViewById(R.id.list_personal_bus);
         busListView.setAdapter(paginatedAdapter);
+    }
+
+    protected void handleBus() {
+        mApiService.getMyBus(LoginActivity.loggedAccount.id).enqueue(new Callback<BaseResponse<List<Bus>>>(){
+
+            @Override
+            public void onResponse(Call<BaseResponse<List<Bus>>> call, Response<BaseResponse<List<Bus>>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(mContext, "Application error " +
+                            response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                BaseResponse<List<Bus>>res = response.body();
+                if (res.success) {
+                    Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
+                    listBus = res.payload;
+                    listSize = listBus.size();
+                    paginationFooter();
+                    goToPage(currentPage);
+                }
+            }
+            @Override
+            public void onFailure(Call<BaseResponse<List<Bus>>> call, Throwable t) {
+                Toast.makeText(mContext, "Problem with the server",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
