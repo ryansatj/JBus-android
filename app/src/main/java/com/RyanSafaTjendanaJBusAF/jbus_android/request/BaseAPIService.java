@@ -11,6 +11,7 @@ import com.ryansafatjendanajbusaf.jbus_android.model.Station;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.CallAdapter;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -65,4 +66,12 @@ public interface BaseApiService {
             @Query("stationDepartureId") int stationDepartureId,
             @Query("stationArrivalId") int stationArrivalId
             );
+    @POST("bus/addSchedule")
+    Call<BaseResponse<Bus>> addSchedule(
+            @Query("busId") int busId,
+            @Query("time") String time
+    );
+
+    @GET("bus/getAllBus")
+    Call<BaseResponse<List<Bus>>> getAllBus();
 }

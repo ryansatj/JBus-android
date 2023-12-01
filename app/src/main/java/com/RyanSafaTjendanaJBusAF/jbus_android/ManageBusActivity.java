@@ -138,7 +138,6 @@ public class ManageBusActivity extends AppCompatActivity {
         int startIndex = page * pageSize;
         int endIndex = Math.min(startIndex + pageSize, listBus.size());
         List<Bus> paginatedList = listBus.subList(startIndex, endIndex);
-
         PersonalBusArrayAdapter paginatedAdapter = new PersonalBusArrayAdapter(this, paginatedList);
         busListView = findViewById(R.id.list_personal_bus);
         busListView.setAdapter(paginatedAdapter);

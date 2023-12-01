@@ -120,52 +120,23 @@
             <TextView
                 android:id="@+id/viewbus"
                 style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
                 android:accessibilityLiveRegion="polite"
                 android:backgroundTint="#994909D8"
                 android:fontFamily="monospace"
-                android:text="Manage Bus"
+                android:text="Bus Schedules"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:visibility="visible"
                 app:cornerRadius="21dp" />
 
-            <Button
-                android:id="@+id/about_company"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:accessibilityLiveRegion="polite"
-                android:drawableEnd="@drawable/baseline_apartment_24"
-                android:drawableTint="#FFFFFF"
-                android:textAllCaps="false"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:cornerRadius="21dp" />
-
-            <Button
-                android:id="@+id/add_bus"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:accessibilityLiveRegion="polite"
-                android:drawableEnd="@drawable/baseline_add_24"
-                android:textAllCaps="false"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:cornerRadius="21dp" />
         </LinearLayout>
         ]
 
         <ListView
-            android:id="@+id/list_personal_bus"
+            android:id="@+id/list_schedules"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"

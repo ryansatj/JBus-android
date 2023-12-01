@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:accessibilityLiveRegion="none"
+    android:animateLayoutChanges="true"
+    android:animationCache="false"
+    android:background="@drawable/purple_wallpaper_with_colorful_background_purple_background_1340_27517"
+    android:backgroundTint="#000000"
+    android:backgroundTintMode="add"
+    android:focusable="auto"
+    android:foregroundGravity="top"
+    android:foregroundTint="@color/purple_200"
+    android:gravity="left"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"> <!-- Add this line -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="top">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="251dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/major_mono_display"
+        android:gravity="left"
+        android:text="JBUS company"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/back_button"
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite"
+            android:backgroundTint="#994909D8"
+            android:fontFamily="@font/major_mono_display"
+            android:text="Back"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="20dp"
+            android:textSize="10sp"
+            app:cornerRadius="21dp" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/kata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/major_mono_display"
+        android:gravity="center"
+        android:text="Make Business better with us"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A6E8D9D9"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name_bus"
+            style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="#E66E7CC3"
+            android:drawingCacheQuality="auto"
+            android:fontFamily="@font/concert_one"
+            android:hint="Bus Name"
+            android:insetLeft="50dp"
+            android:insetRight="50dp"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:drawableStartCompat="@drawable/baseline_directions_bus_24" />
+
+        <TextView
+            android:id="@+id/capacity_bus"
+            style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#E66E7CC3"
+            android:drawingCacheQuality="auto"
+            android:fontFamily="@font/concert_one"
+            android:hint="Capacity"
+            android:insetLeft="50dp"
+            android:insetRight="50dp"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:drawableStartCompat="@drawable/baseline_person_24" />
+
+        <TextView
+            android:id="@+id/price_bus"
+            style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#E66E7CC2"
+            android:bufferType="spannable"
+            android:drawableStart="@drawable/baseline_payments_24"
+            android:fontFamily="@font/concert_one"
+            android:hint="Price"
+            android:insetLeft="50dp"
+            android:insetRight="50dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:typeface="normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:paddingHorizontal="3dp"
+            android:layout_marginBottom="9dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:text="Bus Type"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_directions_bus_24"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/bus_type_dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:hint="Bus type"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:paddingHorizontal="3dp"
+            android:layout_marginBottom="9dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:text="Departure"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_arrow_circle_right_24"
+                app:tint="@color/black" />
+            <TextView
+                android:id="@+id/departure_dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:hint="Departure"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:paddingHorizontal="3dp"
+            android:layout_marginBottom="9dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:text="Arrival"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_arrow_circle_left_24"
+                app:tint="@color/black" />
+            <TextView
+                android:id="@+id/arrival_dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:hint="Arrival"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Facilities:"
+            android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/facilities_bus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#737EBE"
+                android:fontFamily="monospace"
+                android:hint="Facilities" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/schedule"
+            android:layout_gravity="center"
+            style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#E66E7CC2"
+            android:bufferType="spannable"
+            android:drawableStart="@drawable/baseline_calendar_today_24"
+            android:fontFamily="@font/concert_one"
+            android:hint="YYYY-mm-dd hh:mm:ss.ms"
+            android:inputType="text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:typeface="normal" />
+
+        <Button
+            android:id="@+id/add_schedule_button"
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite"
+            android:backgroundTint="#994909D8"
+            android:fontFamily="@font/major_mono_display"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="12dp"
+            android:text="    ADD    "
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            app:cornerRadius="21dp" />
+    </LinearLayout>
+
+</LinearLayout>
