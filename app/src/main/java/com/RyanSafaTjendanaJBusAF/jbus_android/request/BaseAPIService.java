@@ -5,6 +5,7 @@ import com.ryansafatjendanajbusaf.jbus_android.model.BaseResponse;
 import com.ryansafatjendanajbusaf.jbus_android.model.Bus;
 import com.ryansafatjendanajbusaf.jbus_android.model.BusType;
 import com.ryansafatjendanajbusaf.jbus_android.model.Facility;
+import com.ryansafatjendanajbusaf.jbus_android.model.Payment;
 import com.ryansafatjendanajbusaf.jbus_android.model.Renter;
 import com.ryansafatjendanajbusaf.jbus_android.model.Station;
 
@@ -74,4 +75,23 @@ public interface BaseApiService {
 
     @GET("bus/getAllBus")
     Call<BaseResponse<List<Bus>>> getAllBus();
+
+    @POST("payment/makeBooking")
+    Call<BaseResponse<Payment>> makeBooking(
+            @Query("buyerId") int buyerId,
+            @Query("renterId") int renterId,
+            @Query("busId") int busId,
+            @Query("busSeats") List<String> busSeats,
+            @Query("departureDate") String departureDate
+    );
+
+    @GET("payment/getMySeat")
+    Call<BaseResponse<List<Payment>>> getMySeat(
+            @Query("buyerId") int buyerId
+    );
+
+    @GET("bus/getBusPrice")
+    Call<BaseResponse<Bus>> getBusPrice(
+            @Query("busId") int busId
+    );
 }

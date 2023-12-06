@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.ryansafatjendanajbusaf.jbus_android.R;
 import com.ryansafatjendanajbusaf.jbus_android.model.Account;
 import com.ryansafatjendanajbusaf.jbus_android.model.BaseResponse;
@@ -32,7 +34,7 @@ public class AddScheduleActivity extends AppCompatActivity {
     private String busNameS, capacityS, priceS, departureS, arrivalS, facilitiesS, busTypeS;
     private BaseApiService mApiService;
     private Context mContext;
-    private static final String REGEX_DATE = "^[2000-2023]+[-]+(?:[0]\\d|1[0-2])+[-]+(?:[0]\\d|3[0-1])+[ ]+(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d+[.]+(?:[01]\\d|[2-9][0-9])$";
+    private static final String REGEX_DATE = "^[0-2023]+[-]+(?:[00]\\d|1[0-2])+[-]+(?:[01]\\d|3[0-1])+[ ]+(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d+[.]+(?:[01]\\d|[2-9][0-9])$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class AddScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_schedule);
         mContext = this;
         mApiService = UtilsApi.getApiService();
+
         busName = findViewById(R.id.name_bus);
         capacity = findViewById(R.id.capacity_bus);
         price = findViewById(R.id.price_bus);
@@ -84,16 +87,17 @@ public class AddScheduleActivity extends AppCompatActivity {
         String schedS = schedAdd.getText().toString();
         if(schedS.isEmpty()) {
             Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        Pattern patternSched = Pattern.compile(REGEX_DATE);
-        Matcher matcherSched = patternSched.matcher(schedS);
-        boolean matchDateFound = matcherSched.find();
-
-        if(!matchDateFound) {
-            Toast.makeText(this, "format tanggal salah", Toast.LENGTH_SHORT).show();
-        }
-        
+//        Pattern patternSched = Pattern.compile(REGEX_DATE);
+//        Matcher matcherSched = patternSched.matcher(schedS);
+//        boolean matchDateFound = matcherSched.find();
+//
+//        if(!matchDateFound) {
+//            Toast.makeText(this, "format tanggal salah", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
         mApiService.addSchedule(PersonalBusArrayAdapter.selectedBus.id, schedS).enqueue(new Callback<BaseResponse<Bus>>(){
             @Override
@@ -106,6 +110,7 @@ public class AddScheduleActivity extends AppCompatActivity {
                 BaseResponse<Bus> res = response.body();
                 if (res.success) {
                     PersonalBusArrayAdapter.selectedBus.schedules = res.payload.schedules;
+                    BusArrayAdapter.mainSelectedBus.schedules = res.payload.schedules;
                     moveActivity(mContext, ManageBusActivity.class);
                     Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
                 }

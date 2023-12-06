@@ -82,7 +82,7 @@ public class AboutMeActivity extends AppCompatActivity {
         });
 
         back.setOnClickListener(v->{
-            finish();
+            moveActivity(this, MainActivity.class);
         });
     }
 

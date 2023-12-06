@@ -79,7 +79,7 @@ public class ManageBusActivity extends AppCompatActivity {
         });
 
         back.setOnClickListener(v->{
-            finish();
+            moveActivity(this, AboutMeActivity.class);
         });
 
     }
@@ -144,29 +144,32 @@ public class ManageBusActivity extends AppCompatActivity {
     }
 
     protected void handleBus() {
-        mApiService.getMyBus(LoginActivity.loggedAccount.id).enqueue(new Callback<BaseResponse<List<Bus>>>(){
 
-            @Override
-            public void onResponse(Call<BaseResponse<List<Bus>>> call, Response<BaseResponse<List<Bus>>> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(mContext, "Application error " +
-                            response.code(), Toast.LENGTH_SHORT).show();
-                    return;
+        if(LoginActivity.loggedAccount != null)
+        {
+            mApiService.getMyBus(LoginActivity.loggedAccount.id).enqueue(new Callback<BaseResponse<List<Bus>>>(){
+                @Override
+                public void onResponse(Call<BaseResponse<List<Bus>>> call, Response<BaseResponse<List<Bus>>> response) {
+                    if (!response.isSuccessful()) {
+                        Toast.makeText(mContext, "Application error " +
+                                response.code(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    BaseResponse<List<Bus>>res = response.body();
+                    if (res.success) {
+                        Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
+                        listBus = res.payload;
+                        listSize = listBus.size();
+                        paginationFooter();
+                        goToPage(currentPage);
+                    }
                 }
-                BaseResponse<List<Bus>>res = response.body();
-                if (res.success) {
-                    Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
-                    listBus = res.payload;
-                    listSize = listBus.size();
-                    paginationFooter();
-                    goToPage(currentPage);
+                @Override
+                public void onFailure(Call<BaseResponse<List<Bus>>> call, Throwable t) {
+                    Toast.makeText(mContext, "Problem with the server",
+                            Toast.LENGTH_SHORT).show();
                 }
-            }
-            @Override
-            public void onFailure(Call<BaseResponse<List<Bus>>> call, Throwable t) {
-                Toast.makeText(mContext, "Problem with the server",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+            });
+        }
     }
 }

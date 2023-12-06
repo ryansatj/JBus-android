@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:ignore="UselessParent">
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:id="@+id/footer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom"
+            android:gravity="top"
             android:orientation="horizontal">
 
             <TextView
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:accessibilityLiveRegion="polite"
                 android:backgroundTint="#994909D8"
-                android:text="Bus"
+                android:hint="Bus"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="15sp"
@@ -35,15 +35,28 @@
                 android:visibility="visible"
                 app:cornerRadius="21dp" />
 
-            <Button
-                android:id="@+id/bus_detail"
+            <TextView
+                android:id="@+id/text_view2"
                 style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:accessibilityLiveRegion="polite"
                 android:backgroundTint="#994909D8"
-                android:drawableEnd="@drawable/baseline_directions_bus_24"
-                android:fontFamily="@font/major_mono_display"
+                android:hint="Seat"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:cornerRadius="21dp" />
+            <TextView
+                android:id="@+id/text_view3"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:accessibilityLiveRegion="polite"
+                android:backgroundTint="#994909D8"
+                android:hint="Status"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="15sp"
@@ -52,4 +65,5 @@
                 app:cornerRadius="21dp" />
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>
