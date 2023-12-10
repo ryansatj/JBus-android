@@ -94,4 +94,19 @@ public interface BaseApiService {
     Call<BaseResponse<Bus>> getBusPrice(
             @Query("busId") int busId
     );
+
+    @POST("payment/{id}/accept")
+    Call<BaseResponse<Payment>> accept(
+            @Path("id") int id
+    );
+
+    @POST("payment/{id}/cancel")
+    Call<BaseResponse<Payment>> cancel(
+            @Path("id") int id
+    );
+
+    @POST("payment/deletePayment")
+    Call<BaseResponse<Payment>> deletePayment(
+            @Query("id") int id
+    );
 }

@@ -19,18 +19,6 @@
     android:orientation="vertical"
     tools:context=".LoginActivity"> <!-- Add this line -->
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/major_mono_display"
-        android:gravity="left"
-        android:text="JBUS"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/white"
-        android:textSize="48sp"
-        android:textStyle="bold" />
-
 
     <TextView
         android:id="@+id/busde"
@@ -91,7 +79,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:drawableStartCompat="@drawable/baseline_person_24" />
 
-        <EditText
+        <TextView
             android:id="@+id/price_bus"
             style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
             android:layout_width="match_parent"
@@ -216,7 +204,7 @@
             <TextView
                 android:layout_width="96dp"
                 android:layout_height="wrap_content"
-                android:text="Schedules"
+                android:text="Schedule"
                 android:textSize="18dp"
                 android:textColor="@color/black"/>
             <ImageView
@@ -224,10 +212,16 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_calendar_today_24"
                 app:tint="@color/black" />
-            <Spinner
-                android:id="@+id/schedules"
+            <TextView
+                android:id="@+id/schedule_detail"
                 android:layout_width="match_parent"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:hint="Schedule"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -249,10 +243,16 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_airline_seat_recline_normal_24"
                 app:tint="@color/black" />
-            <Spinner
-                android:id="@+id/seats"
+            <TextView
+                android:id="@+id/seat_detail"
                 android:layout_width="match_parent"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:hint="Arrival"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
 
@@ -280,7 +280,7 @@
 
 
         <Button
-            android:id="@+id/back_button"
+            android:id="@+id/pay_button"
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -291,10 +291,30 @@
             android:insetRight="100dp"
             android:paddingHorizontal="12dp"
             android:paddingVertical="12dp"
-            android:text="Order seat"
+            android:text="Pay Now"
             android:textSize="16sp"
             android:textAllCaps="false"
             android:textColor="@color/white"
+            android:visibility="visible"
+            app:cornerRadius="21dp" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite"
+            android:backgroundTint="#994909D8"
+            android:fontFamily="@font/major_mono_display"
+            android:layout_gravity="center"
+            android:insetLeft="50dp"
+            android:insetRight="50dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="12dp"
+            android:text="cancel Payment"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp"
             android:visibility="visible"
             app:cornerRadius="21dp" />
     </LinearLayout>

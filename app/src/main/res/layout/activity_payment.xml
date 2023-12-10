@@ -120,7 +120,7 @@
                 android:accessibilityLiveRegion="polite"
                 android:backgroundTint="#994909D8"
                 android:fontFamily="monospace"
-                android:hint="hint"
+                android:hint="0"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textColorHint="@color/white"

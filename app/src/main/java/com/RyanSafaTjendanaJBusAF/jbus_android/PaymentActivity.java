@@ -60,6 +60,12 @@ public class PaymentActivity extends AppCompatActivity implements BusPriceCallba
         pageScroll = findViewById(R.id.page_number_scroll);
         paymentListView = findViewById(R.id.payment_list);
 
+        Button backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v->{
+            moveActivity(this, MainActivity.class);
+        });
+
         prevButton.setOnClickListener(v -> {
             currentPage = currentPage != 0? currentPage-1 : 0;
             goToPage(currentPage);

@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 
 import com.ryansafatjendanajbusaf.jbus_android.model.BaseResponse;
 import com.ryansafatjendanajbusaf.jbus_android.model.Bus;
+import com.ryansafatjendanajbusaf.jbus_android.model.Invoice;
 import com.ryansafatjendanajbusaf.jbus_android.model.Payment;
 import com.ryansafatjendanajbusaf.jbus_android.request.BaseApiService;
 import com.ryansafatjendanajbusaf.jbus_android.request.UtilsApi;
@@ -34,7 +35,8 @@ public class PaymentArrayAdapter extends ArrayAdapter<Payment> {
     private BusPriceCallback callback;
     private Context mContext;
     private BaseApiService mApiService;
-
+    public static Bus selectedBusPayment;
+    public static Payment selectedPayment;
     public PaymentArrayAdapter(@NonNull Context context, List<Payment> list, BusPriceCallback callback) {
         super(context, 0, list);
         mContext = context;
@@ -62,9 +64,11 @@ public class PaymentArrayAdapter extends ArrayAdapter<Payment> {
                     }
                     BaseResponse<Bus>res = response.body();
                     if (res.success) {
-                        PaymentActivity.allBusPrice.add(res.payload);
-                        if (callback != null) {
-                            callback.onBusPriceReceived(PaymentActivity.allBusPrice);
+                        if(payment.status == Invoice.PaymentStatus.WAITING) {
+                            PaymentActivity.allBusPrice.add(res.payload);
+                            if (callback != null) {
+                                callback.onBusPriceReceived(PaymentActivity.allBusPrice);
+                            }
                         }
                     }
                 }
@@ -74,21 +78,88 @@ public class PaymentArrayAdapter extends ArrayAdapter<Payment> {
                             Toast.LENGTH_SHORT).show();
                 }
             });
+
             View view = currentItemView.findViewById(R.id.footer);
             view.setOnClickListener(v -> {
-                Intent intent = new Intent(mContext, PaymentDetailActivity.class);
-                mContext.startActivity(intent);
+                handleGetBusPrice(position);
             });
             SimpleDateFormat SDF = new SimpleDateFormat("MMMM dd, yyyy hh:mm");
             TextView textView1 = currentItemView.findViewById(R.id.text_view);
             String tanggal = SDF.format(payment.departureDate);
             textView1.setText(tanggal);
+            textView1.setOnClickListener(v -> {
+                handleGetBusPrice(position);
+            });
             TextView textView2 = currentItemView.findViewById(R.id.text_view2);
             textView2.setText(payment.busSeat.get(0).toString());
+            textView2.setOnClickListener(v -> {
+                handleGetBusPrice(position);
+            });
             TextView textView3 = currentItemView.findViewById(R.id.text_view3);
             textView3.setText(payment.status.toString());
+            textView3.setOnClickListener(v -> {
+                handleGetBusPrice(position);
+            });
+            Button buttonDelete = currentItemView.findViewById(R.id.trash);
+            buttonDelete.setOnClickListener(v -> {
+                selectedPayment = getItem(position);
+                if(selectedPayment.status == Invoice.PaymentStatus.WAITING){
+                    Toast.makeText(mContext, "Lakukan pembayaran atau cancel untuk menghapus", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    assert selectedPayment != null;
+                    mApiService.deletePayment(selectedPayment.id).enqueue(new Callback<BaseResponse<Payment>>(){
+                        @Override
+                        public void onResponse(Call<BaseResponse<Payment>> call, Response<BaseResponse<Payment>> response) {
+                            if (!response.isSuccessful()) {
+                                Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            BaseResponse<Payment>res = response.body();
+                            if (res.success) {
+                                Intent intent = new Intent(mContext, MainActivity.class);
+                                mContext.startActivity(intent);
+                                Intent intent1 = new Intent(mContext, PaymentActivity.class);
+                                mContext.startActivity(intent1);
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<BaseResponse<Payment>> call, Throwable t) {
+                            Toast.makeText(mContext, "Problem with the server",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+            });
+
         }
         return currentItemView;
+    }
+
+    public void handleGetBusPrice(int position){
+        selectedPayment = getItem(position);
+
+        mApiService.getBusPrice(selectedPayment.getBusId()).enqueue(new Callback<BaseResponse<Bus>>(){
+            @Override
+            public void onResponse(Call<BaseResponse<Bus>> call, Response<BaseResponse<Bus>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                BaseResponse<Bus>res = response.body();
+                if (res.success) {
+                    selectedBusPayment = res.payload;
+                    Intent intent = new Intent(mContext, PaymentDetailActivity.class);
+                    mContext.startActivity(intent);
+                }
+            }
+            @Override
+            public void onFailure(Call<BaseResponse<Bus>> call, Throwable t) {
+                Toast.makeText(mContext, "Problem with the server",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

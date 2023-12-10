@@ -13,34 +13,12 @@
     android:backgroundTint="#000000"
     android:backgroundTintMode="add"
     android:focusable="auto"
-    android:foregroundGravity="top"
+    android:foregroundGravity="center"
     android:foregroundTint="@color/purple_200"
-    android:gravity="left"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".LoginActivity"> <!-- Add this line -->
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/major_mono_display"
-        android:gravity="left"
-        android:text="JBUS company"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/white"
-        android:textSize="48sp"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/kata"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/major_mono_display"
-        android:gravity="center"
-        android:text="Make Business better with us"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/busde"
@@ -49,10 +27,20 @@
         android:fontFamily="@font/major_mono_display"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Bus Detail"
+        android:text="INVOICE"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
         android:textSize="16sp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/major_mono_display"
+        android:gravity="center"
+        android:text="please save or screenshot this invoice!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -215,6 +203,99 @@
                 android:textStyle="bold"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:paddingHorizontal="3dp"
+            android:layout_marginBottom="9dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:text="Schedule"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_calendar_today_24"
+                app:tint="@color/black" />
+            <TextView
+                android:id="@+id/schedule_detail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:hint="Schedule"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:paddingHorizontal="3dp"
+            android:layout_marginBottom="9dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:text="Seats"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_airline_seat_recline_normal_24"
+                app:tint="@color/black" />
+            <TextView
+                android:id="@+id/seat_detail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:hint="Arrival"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:paddingHorizontal="3dp"
+            android:layout_marginBottom="9dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_assignment_turned_in_24"
+                app:tint="@color/black" />
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:hint="Status"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -237,7 +318,6 @@
         </LinearLayout>
 
 
-
         <Button
             android:id="@+id/back_button"
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
@@ -256,6 +336,7 @@
             android:textColor="@color/white"
             android:visibility="visible"
             app:cornerRadius="21dp" />
+
     </LinearLayout>
 
 </LinearLayout>

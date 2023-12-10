@@ -34,7 +34,7 @@ public class AddScheduleActivity extends AppCompatActivity {
     private String busNameS, capacityS, priceS, departureS, arrivalS, facilitiesS, busTypeS;
     private BaseApiService mApiService;
     private Context mContext;
-    private static final String REGEX_DATE = "^[0-2023]+[-]+(?:[00]\\d|1[0-2])+[-]+(?:[01]\\d|3[0-1])+[ ]+(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d+[.]+(?:[01]\\d|[2-9][0-9])$";
+    private static final String REGEX_DATE = "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,14 +90,14 @@ public class AddScheduleActivity extends AppCompatActivity {
             return;
         }
 
-//        Pattern patternSched = Pattern.compile(REGEX_DATE);
-//        Matcher matcherSched = patternSched.matcher(schedS);
-//        boolean matchDateFound = matcherSched.find();
-//
-//        if(!matchDateFound) {
-//            Toast.makeText(this, "format tanggal salah", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        Pattern patternSched = Pattern.compile(REGEX_DATE);
+        Matcher matcherSched = patternSched.matcher(schedS);
+        boolean matchDateFound = matcherSched.find();
+
+        if(!matchDateFound) {
+            Toast.makeText(this, "format tanggal salah", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mApiService.addSchedule(PersonalBusArrayAdapter.selectedBus.id, schedS).enqueue(new Callback<BaseResponse<Bus>>(){
             @Override
